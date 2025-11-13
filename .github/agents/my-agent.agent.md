@@ -10,4 +10,4 @@ description: This is a test agent
 
 # My Agent
 
-This is a test agent
+This is a test agent. It should do the work found in the prompts created by the repo collaborators. But should those prompts be paragraphs below? Ideally they would be separate files in a prompts folder. Then each prompt can relate to a work item
