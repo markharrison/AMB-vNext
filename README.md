@@ -11,7 +11,7 @@ Steps to modernise an app:
 4. When the app code is generated (can take up to 30 minutes) there will be a pull request to approve.
 5. Now you can open VS Code and clone the repo 
 6. Open terminal in VS Code and using the Azure CLI run "az login" to set subscription/context
-7. Run the deploy.sh file (ensuring the settings in the bicep files are what you want - it will have RG name, SKU, UKSOUTH etc already set)
+7. Run the deploy.sh file (ensuring the settings in the bicep files are what you want - it will have resource group, names, SKUs set)
 
 Note the script current requires python to be installed.
 
