@@ -1,0 +1,60 @@
+@page
+@model ExpenseManagement.Web.Pages.Expenses.CreateModel
+@{
+    ViewData["Title"] = "Add Expense";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">Add Expense</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Input.Amount" class="form-label">Amount (£)</label>
+                        <input asp-for="Input.Amount" class="form-control" step="0.01" min="0.01" placeholder="0.00" />
+                        <span asp-validation-for="Input.Amount" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Input.ExpenseDate" class="form-label">Date</label>
+                        <input asp-for="Input.ExpenseDate" class="form-control" type="date" />
+                        <span asp-validation-for="Input.ExpenseDate" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Input.CategoryId" class="form-label">Category</label>
+                        <select asp-for="Input.CategoryId" asp-items="Model.Categories" class="form-select">
+                            <option value="">Select a category...</option>
+                        </select>
+                        <span asp-validation-for="Input.CategoryId" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Input.Description" class="form-label">Description</label>
+                        <textarea asp-for="Input.Description" class="form-control" rows="4" placeholder="Enter expense description..."></textarea>
+                        <span asp-validation-for="Input.Description" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input asp-for="Input.Submit" class="form-check-input" type="checkbox" />
+                        <label asp-for="Input.Submit" class="form-check-label">Submit for approval immediately</label>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Save Expense</button>
+                        <a asp-page="/Expenses/Index" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

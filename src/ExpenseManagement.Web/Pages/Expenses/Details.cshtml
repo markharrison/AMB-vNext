@@ -1,0 +1,74 @@
+@page "{id:int}"
+@model ExpenseManagement.Web.Pages.Expenses.DetailsModel
+@{
+    ViewData["Title"] = "Expense Details";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">Expense Details</h4>
+                <span class="badge-status badge-@Model.Expense?.StatusName?.ToLower()">
+                    @Model.Expense?.StatusName?.ToUpper()
+                </span>
+            </div>
+            <div class="card-body">
+                @if (Model.Expense != null)
+                {
+                    <dl class="row">
+                        <dt class="col-sm-3">Date</dt>
+                        <dd class="col-sm-9">@Model.Expense.ExpenseDate.ToString("dd MMM yyyy")</dd>
+
+                        <dt class="col-sm-3">Employee</dt>
+                        <dd class="col-sm-9">@Model.Expense.UserName</dd>
+
+                        <dt class="col-sm-3">Category</dt>
+                        <dd class="col-sm-9">@Model.Expense.CategoryName</dd>
+
+                        <dt class="col-sm-3">Amount</dt>
+                        <dd class="col-sm-9"><strong>£@Model.Expense.Amount.ToString("N2")</strong></dd>
+
+                        <dt class="col-sm-3">Description</dt>
+                        <dd class="col-sm-9">@(Model.Expense.Description ?? "No description provided")</dd>
+
+                        @if (Model.Expense.SubmittedAt.HasValue)
+                        {
+                            <dt class="col-sm-3">Submitted</dt>
+                            <dd class="col-sm-9">@Model.Expense.SubmittedAt.Value.ToString("dd MMM yyyy HH:mm")</dd>
+                        }
+
+                        @if (Model.Expense.ReviewedBy.HasValue)
+                        {
+                            <dt class="col-sm-3">Reviewed By</dt>
+                            <dd class="col-sm-9">@Model.Expense.ReviewerName</dd>
+
+                            <dt class="col-sm-3">Reviewed At</dt>
+                            <dd class="col-sm-9">@Model.Expense.ReviewedAt?.ToString("dd MMM yyyy HH:mm")</dd>
+                        }
+                    </dl>
+
+                    <hr />
+
+                    <div class="d-flex gap-2">
+                        @if (Model.Expense.StatusId == 1) // Draft
+                        {
+                            <form method="post" asp-page-handler="Submit">
+                                <button type="submit" class="btn btn-primary">Submit for Approval</button>
+                            </form>
+                            <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Are you sure you want to delete this expense?');">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        }
+                        <a asp-page="/Expenses/Index" class="btn btn-outline-secondary">Back to List</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-warning">Expense not found.</div>
+                    <a asp-page="/Expenses/Index" class="btn btn-outline-secondary">Back to List</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
