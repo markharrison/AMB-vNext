@@ -13,7 +13,7 @@ You will create the necessary code files, project structure, and documentation n
 
 Ensure that best practices are followed for code quality, security, and performance.
 
-When activated using the following plan files to help direct the work needed.
+**Important** When activated using the following plan files to help direct the work needed : 
 
 [Plan 1 - Create Web App Code](./plans/plan-appdev-001-create-webapp-code.md)
 [Plan 2 - Create API App Code](./plans/plan-appdev-002-create-apiapp-code.md)
