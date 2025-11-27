@@ -1,14 +1,1 @@
-When contributing prompts to this repo bear in mind that you will need to fork it to run the coding agent to test the prompt to not accidentally add files to the project. When forking make sure to rename to something that *does not* have App-mod-assist in the name
-in case you confuse with the main repo in future and edit the wrong one. Use "AMA-FridayTest01" for example
-
-Because this repo is meant to support a workshop to stand up a POC of a modern app quickly and not intended for Production (without the PRODUCTION_CONSIDERATIONS applying from the docs)
-there is a guiding principle to use mechanics to deploy to azure that dont need excessive set up in Azure portal or GitHub action configuration. For example cloning the repo to desktop and deploying things via one line in terminal
-to leverage Azure CLI login etc will likely be easier than creating secrets and identities across portals/actions.
-
-To speed up the agent when testing new prompts just make a shorter list of prompt names in the prompt-order file and/or create new mini-prompts in your fork so that the agent just executes the work you want to test
-
-To improve prompts when testing new funcitonality in VS CODE you can fix an issue with copilot in the IDE and then ask:
-
-"now write a prompt explaining what you had to do so that when a new GenAI agent creates this solution from scratch it doesnt make this mistake again"
-
-Then just put that new prompt into your original prompt in the repo
+Play Nice
